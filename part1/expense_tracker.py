@@ -1,12 +1,18 @@
-def add_expense(expenses, amount, category):
+'''Nothing crazy going on here, just manipulating a list containing bunch of dictionaries which describe an expense.
+Filtering is done by categories. Lambda function is used.'''
+
+def add_expense(expenses, amount, category):        #adds a dictionary
     expenses.append({'amount': amount, 'category': category})
     
-def print_expenses(expenses):
+def print_expenses(expenses):       #prints all the dictionaries
     for expense in expenses:
         print(f'Amount: {expense["amount"]}, Category: {expense["category"]}')
     
 def total_expenses(expenses):
-    return sum(map(lambda expense: expense['amount'], expenses))
+    return sum(map(lambda expense: expense['amount'], expenses))        #here, lambda function takes the dictionary 'expense' and then returns the value for 'amount' key within that dictionary.
+                                                                        #when given as an argument to map function along with 'expenses' list, the lambda function operates on every item in the
+                                                                        #expenses list. the map fucntion returns an iterable map object with values which are a result of that function.
+                                                                        # sum adds all the values in that object, which is finally returned. 
     
 def filter_expenses_by_category(expenses, category):
     return filter(lambda expense: expense['category'] == category, expenses)

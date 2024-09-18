@@ -1,3 +1,9 @@
+'''Program for vigenere cipher. Each letter of the message is shifted by the number of 
+positions corresponding to the letter in the keyword. For example, if the keyword letter 
+is 'B' (2nd letter of the alphabet), the message's letter is shifted by 1 position (A to B, D to E, etc.).'''
+
+
+
 text = 'mrttaqrhknsw ih puggrur'
 custom_key = 'happycoding'
 
@@ -12,14 +18,13 @@ def vigenere(message, key, direction=1):
         if not char.isalpha():
             final_message += char
         else:        
-            # Find the right key character to encode/decode
+            #finding the key character, then increasing the index for the next iteration. 
             key_char = key[key_index % len(key)]
             key_index += 1
-
-            # Define the offset and the encrypted/decrypted letter
-            offset = alphabet.index(key_char)
-            index = alphabet.find(char)
-            new_index = (index + offset*direction) % len(alphabet)
+            
+            offset = alphabet.index(key_char)       #finding number corresponding to the key character. (number to be added)
+            index = alphabet.find(char)             #finding index of the selected character in the message.
+            new_index = (index + offset*direction) % len(alphabet)      #self explanatory
             final_message += alphabet[new_index]
     
     return final_message

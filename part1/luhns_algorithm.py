@@ -1,3 +1,9 @@
+'''This program impliments the Luhn's algo to check whether a given creditcard is valid or not. The Luhn's algo is described as follows:
+We start from the rightmost digit and move leftm while doubling every second digit from the right. If doubling the number results in a 
+number greater than 9, we subtract 9 from the result. We then sum all the digits together, including both the unchanged and the processed 
+digits. If the total is divisible by 10, the number is valid. If it's not divisible by 10, the number is invalid.'''
+
+
 def verify_card_number(card_number):
     sum_of_odd_digits = 0
     card_number_reversed = card_number[::-1]
