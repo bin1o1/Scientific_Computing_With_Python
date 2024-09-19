@@ -1,13 +1,20 @@
-def merge_sort(array):
+'''This program utilizes merge sort algorithm to sort data. It goes as follows:
+We split the array into two halves (divide). Then we recursively apply merge sort 
+on both halves until each subarray has only one element(conquer). After that, we 
+merge the sorted halves back together to produce a sorted array (merge).'''
+
+
+def merge_sort(array):      
     if len(array) <= 1:
         return
-    
-    middle_point = len(array) // 2
+    #calculating the middle point of array and then creating two subarrays (left and right) with half the elements on each subarray
+    middle_point = len(array) // 2      
     left_part = array[:middle_point]
     right_part = array[middle_point:]
 
-    merge_sort(left_part)
-    merge_sort(right_part)
+    #first recursive call
+    merge_sort(left_part)       #executes till the left_part sub array is divided into individual elements 
+    merge_sort(right_part)      #
 
     left_array_index = 0
     right_array_index = 0
