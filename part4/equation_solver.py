@@ -1,33 +1,33 @@
-from abc import ABC, abstractmethod
+from abc import ABC, abstractmethod         #ABC means abstract class
 import re
 
 
-class Equation(ABC):
+class Equation(ABC):            #passing ABC to declare this as an abstract class
     degree: int
     type: str
   
     def __init__(self, *args):
-        if (self.degree + 1) != len(args):
+        if (self.degree + 1) != len(args):          #if arguments are less/more than required
             raise TypeError(
                 f"'Equation' object takes {self.degree + 1} positional arguments but {len(args)} were given"
             )
-        if any(not isinstance(arg, (int, float)) for arg in args):
+        if any(not isinstance(arg, (int, float)) for arg in args):              #if any argument provided is not of the type int or float
             raise TypeError("Coefficients must be of type 'int' or 'float'")
-        if args[0] == 0:
+        if args[0] == 0:            #if the coefficient of the highest degree is 0
             raise ValueError("Highest degree coefficient must be different from zero")
-        self.coefficients = {(len(args) - n - 1): arg for n, arg in enumerate(args)}
+        self.coefficients = {(len(args) - n - 1): arg for n, arg in enumerate(args)}            #assign the arguments to the coefficients dictionary class attribute
 
-    def __init_subclass__(cls):
-        if not hasattr(cls, "degree"):
+    def __init_subclass__(cls):         #when declaring the subclass
+        if not hasattr(cls, "degree"):          #if it doesn't have the attribute degree, raise AttributeError
             raise AttributeError(
                 f"Cannot create '{cls.__name__}' class: missing required attribute 'degree'"
             )
-        if not hasattr(cls, "type"):
+        if not hasattr(cls, "type"):            #if it doesn't have the attribute type, raise AttributeError
             raise AttributeError(
                 f"Cannot create '{cls.__name__}' class: missing required attribute 'type'"
             )
 
-    def __str__(self):
+    def __str__(self):      #To return the equation
         terms = []
         for n, coefficient in self.coefficients.items():
             if not coefficient:

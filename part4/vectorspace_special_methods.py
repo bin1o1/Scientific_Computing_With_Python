@@ -3,14 +3,14 @@ class R2Vector:
         self.x = x
         self.y = y
 
-    def norm(self):
-        return sum(val**2 for val in vars(self).values())**0.5
+    def norm(self):         #returns the distance from origin
+        return sum(val**2 for val in vars(self).values())**0.5      #vars returns the dictionary containing all the attributes and their values in the object
 
     def __str__(self):
         return str(tuple(getattr(self, i) for i in vars(self)))
 
-    def __repr__(self):
-        arg_list = [f'{key}={val}' for key, val in vars(self).items()]
+    def __repr__(self):         #returns the string that shows how to instansiate the object we're calling this function from
+        arg_list = [f'{key}={val}' for key, val in vars(self).items()]          #using .items() because otherwise we'd only be able to iterate over the keys
         args = ', '.join(arg_list)
         return f'{self.__class__.__name__}({args})'
 

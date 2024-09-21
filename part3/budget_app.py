@@ -1,3 +1,5 @@
+'''Makes different objects for different categories, then lets the user withdraw, transfer from, deposit into that category with comments. Can make graph according to expenditure % in each category too.'''
+
 class Category:
     def __str__(self):
         string = ''
@@ -15,7 +17,7 @@ class Category:
         self.ledger = []
 
     def check_funds(self, amount):
-        if amount > sum(map(lambda dictionary: dictionary['amount'], (dictionary for dictionary in self.ledger))):
+        if amount > sum(map(lambda dictionary: dictionary['amount'], (dictionary for dictionary in self.ledger))): 
             return False
         return True
 
